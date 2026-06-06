@@ -154,8 +154,9 @@ h2 {
 
 .playersList li {
 	display: flex;
-	flex-direction: column;
-	gap: 4px;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
 	background: #1e1e1e;
 	padding: 16px;
 	border-radius: 10px;
@@ -168,6 +169,14 @@ h2 {
 	transition: 0.3s;
 	border-left-width: 8px;
 	background-color: #252525;
+}
+
+.playerInfo {
+	flex: 1;
+}
+
+.playerImg {
+	flex-shrink: 0;
 }
 
 .playerName {
@@ -184,6 +193,14 @@ h2 {
 	color: #888;
 	font-size: 14px;
 	margin-top: 4px;
+}
+
+.playerPhoto {
+	width: 90px;
+	height: 90px;
+	object-fit: cover;
+	object-position: top center;
+	border-radius: 8px;
 }
 
 .goleiro {

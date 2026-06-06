@@ -1,46 +1,206 @@
 // Dados
 const atleticoPlayers = [
 	//Goleiros
-	{ name: 'Everson', position: 'Goleiro', age: 35 },
-	{ name: 'Gabriel Delfim', position: 'Goleiro', age: 23 },
-	{ name: 'Robert', position: 'Goleiro', age: 21 },
-	{ name: 'Pedro Cobra', position: 'Goleiro', age: 20 },
+	{
+		name: 'Everson',
+		position: 'Goleiro',
+		age: 35,
+		image: 'assets/img/players/everson.webp',
+	},
+	{
+		name: 'Gabriel Delfim',
+		position: 'Goleiro',
+		age: 23,
+		image: 'assets/img/players/gabriel-delfim.webp',
+	},
+	{
+		name: 'Robert',
+		position: 'Goleiro',
+		age: 21,
+		image: 'assets/img/players/robert.webp',
+	},
+	{
+		name: 'Pedro Cobra',
+		position: 'Goleiro',
+		age: 20,
+		image: 'assets/img/players/pedro-cobra.webp',
+	},
 
 	//Zagueiros
-	{ name: 'Iván Román', position: 'Zagueiro', age: 20 },
-	{ name: 'Ruan Tressoldi', position: 'Zagueiro', age: 27 },
-	{ name: 'Júnior Alonso', position: 'Zagueiro', age: 31 },
-	{ name: 'Lyanco', position: 'Zagueiro', age: 29 },
-	{ name: 'Vitor Hugo', position: 'Zagueiro', age: 35 },
-	{ name: 'Vitão', position: 'Zagueiro', age: 18 },
+	{
+		name: 'Iván Román',
+		position: 'Zagueiro',
+		age: 20,
+		image: 'assets/img/players/roman.webp',
+	},
+	{
+		name: 'Ruan Tressoldi',
+		position: 'Zagueiro',
+		age: 27,
+		image: 'assets/img/players/ruan.webp',
+	},
+	{
+		name: 'Júnior Alonso',
+		position: 'Zagueiro',
+		age: 31,
+		image: 'assets/img/players/alonso.webp',
+	},
+	{
+		name: 'Lyanco',
+		position: 'Zagueiro',
+		age: 29,
+		image: 'assets/img/players/lyanco.webp',
+	},
+	{
+		name: 'Vitor Hugo',
+		position: 'Zagueiro',
+		age: 35,
+		image: 'assets/img/players/vitor-hugo.webp',
+	},
+	{
+		name: 'Vitão',
+		position: 'Zagueiro',
+		age: 18,
+		image: 'assets/img/players/vitao.webp',
+	},
 
 	//Laterais
-	{ name: 'Natanael', position: 'Lateral', age: 24 },
-	{ name: 'Renan Lodi', position: 'Lateral', age: 28 },
-	{ name: 'Angelo Preciado', position: 'Lateral', age: 28 },
-	{ name: 'Kaua Pascini', position: 'Lateral', age: 18 },
+	{
+		name: 'Natanael',
+		position: 'Lateral',
+		age: 24,
+		image: 'assets/img/players/natanael.webp',
+	},
+	{
+		name: 'Renan Lodi',
+		position: 'Lateral',
+		age: 28,
+		image: 'assets/img/players/lodi.webp',
+	},
+	{
+		name: 'Angelo Preciado',
+		position: 'Lateral',
+		age: 28,
+		image: 'assets/img/players/preciado.webp',
+	},
+	{
+		name: 'Kaua Pascini',
+		position: 'Lateral',
+		age: 18,
+		image: 'assets/img/players/pascini.webp',
+	},
 
 	// Meias
-	{ name: 'Alan Franco', position: 'Meia', age: 27 },
-	{ name: 'Alexsander', position: 'Meia', age: 22 },
-	{ name: 'Bernard', position: 'Meia', age: 33 },
-	{ name: 'Gustavo Scarpa', position: 'Meia', age: 32 },
-	{ name: 'Igor Gomes', position: 'Meia', age: 27 },
-	{ name: 'Índio', position: 'Meia', age: 18 },
-	{ name: 'Iseppe', position: 'Meia', age: 20 },
-	{ name: 'Mamady Cissé', position: 'Meia', age: 19 },
-	{ name: 'Maycon', position: 'Meia', age: 28 },
-	{ name: 'Patrick', position: 'Meia', age: 22 },
-	{ name: 'Reinier', position: 'Meia', age: 24 },
-	{ name: 'Tomás Pérez', position: 'Meia', age: 20 },
-	{ name: 'Víctor Hugo', position: 'Meia', age: 22 },
+	{
+		name: 'Alan Franco',
+		position: 'Meia',
+		age: 27,
+		image: 'assets/img/players/franco.webp',
+	},
+	{
+		name: 'Alexsander',
+		position: 'Meia',
+		age: 22,
+		image: 'assets/img/players/alexsander.webp',
+	},
+	{
+		name: 'Bernard',
+		position: 'Meia',
+		age: 33,
+		image: 'assets/img/players/bernard.webp',
+	},
+	{
+		name: 'Gustavo Scarpa',
+		position: 'Meia',
+		age: 32,
+		image: 'assets/img/players/scarpa.webp',
+	},
+	{
+		name: 'Igor Gomes',
+		position: 'Meia',
+		age: 27,
+		image: 'assets/img/players/igor-gomes.webp',
+	},
+	{
+		name: 'Índio',
+		position: 'Meia',
+		age: 18,
+		image: 'assets/img/players/indio.webp',
+	},
+	{
+		name: 'Iseppe',
+		position: 'Meia',
+		age: 20,
+		image: 'assets/img/players/iseppe.webp',
+	},
+	{
+		name: 'Mamady Cissé',
+		position: 'Meia',
+		age: 19,
+		image: 'assets/img/players/cisse.webp',
+	},
+	{
+		name: 'Maycon',
+		position: 'Meia',
+		age: 28,
+		image: 'assets/img/players/maycon.webp',
+	},
+	{
+		name: 'Patrick',
+		position: 'Meia',
+		age: 22,
+		image: 'assets/img/players/patrick.webp',
+	},
+	{
+		name: 'Reinier',
+		position: 'Meia',
+		age: 24,
+		image: 'assets/img/players/reinier.webp',
+	},
+	{
+		name: 'Tomás Pérez',
+		position: 'Meia',
+		age: 20,
+		image: 'assets/img/players/perez.webp',
+	},
+	{
+		name: 'Víctor Hugo',
+		position: 'Meia',
+		age: 22,
+		image: 'assets/img/players/victor-hugo.webp',
+	},
 
 	// Atacantes
-	{ name: 'Alan Minda', position: 'Atacante', age: 23 },
-	{ name: 'Cauã Soares', position: 'Atacante', age: 17 },
-	{ name: 'Dudu', position: 'Atacante', age: 34 },
-	{ name: 'Mateo Cassierra', position: 'Atacante', age: 29 },
-	{ name: 'Tomás Cuello', position: 'Atacante', age: 26 },
+	{
+		name: 'Alan Minda',
+		position: 'Atacante',
+		age: 23,
+		image: 'assets/img/players/minda.webp',
+	},
+	{
+		name: 'Cauã Soares',
+		position: 'Atacante',
+		age: 17,
+		image: 'assets/img/players/caua.webp',
+	},
+	{
+		name: 'Dudu',
+		position: 'Atacante',
+		age: 34,
+		image: 'assets/img/players/dudu.webp',
+	},
+	{
+		name: 'Mateo Cassierra',
+		position: 'Atacante',
+		age: 29,
+		image: 'assets/img/players/cassierra.webp',
+	},
+	{
+		name: 'Tomás Cuello',
+		position: 'Atacante',
+		age: 26,
+		image: 'assets/img/players/cuello.webp',
+	},
 ]
 
 // Elementos DOM
@@ -53,9 +213,14 @@ const playersCounter = document.getElementById('playersCounter')
 function createPlayerCard(player) {
 	return `
 			<li class="${player.position.toLowerCase()}">
-				<div class="playerName">${player.name}</div>
-				<div class="playerPosition">${player.position}</div>
-				<div class="playerAge">${player.age} anos</div>
+				<div class="playerInfo">
+					<div class="playerName">${player.name}</div>
+					<div class="playerPosition">${player.position}</div>
+					<div class="playerAge">${player.age} anos</div>
+				</div>
+				<div class="playerImg">
+					<img src="${player.image}" alt="${player.name}" class="playerPhoto">
+				</div>
 			</li>
 		`
 }
