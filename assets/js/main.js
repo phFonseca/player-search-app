@@ -312,6 +312,7 @@ function createPlayerCard(player) {
 				<div class="playerInfo">
 					<div class="playerName">${player.name}</div>
 					<div class="playerPosition">${player.position}</div>
+					<div class="shirtNumber">👕 ${player.number}</div>
 					<div class="playerAge">${player.age} anos</div>
 					<div class="playerNationality">
 						${player.flag} ${player.nationality}
