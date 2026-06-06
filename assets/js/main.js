@@ -47,6 +47,7 @@ const atleticoPlayers = [
 const searchInput = document.getElementById('names')
 const positionSelect = document.getElementById('position')
 const playersList = document.getElementById('playersList')
+const playersCounter = document.getElementById('playersCounter')
 
 // Helpers
 function createPlayerCard(player) {
@@ -68,6 +69,14 @@ function renderPlayers(players) {
 	}
 
 	playersList.innerHTML = listItems
+
+	if (players.length === 0) {
+		playersCounter.innerHTML = `Nenhum jogador encontrado`
+	} else if (players.length === 1) {
+		playersCounter.innerHTML = `${players.length} jogador encontrado`
+	} else {
+		playersCounter.innerHTML = `${players.length} jogadores encontrados`
+	}
 }
 
 // Funcionalidades
