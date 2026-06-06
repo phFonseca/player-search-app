@@ -31,14 +31,20 @@ h2 {
 }
 
 .header h1 {
-	font-size: 1.3rem;
+	font-size: 2rem;
+}
+
+.filters,
+.results {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
 }
 
 .searchBox {
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
-	margin-bottom: 30px;
 }
 
 @media (min-width: 768px) {

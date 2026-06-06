@@ -1,12 +1,20 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+		<link
+			rel="icon"
+			type="image/png"
+			href="assets/favicon/favicon-96x96.png"
+			sizes="96x96"
+		/>
+		<link rel="shortcut icon" href="assets/favicon/favicon.ico" />
+
 		<link rel="stylesheet" href="assets/css/style.css" />
 
-		<title>Document</title>
+		<title>Atlético Mineiro</title>
 	</head>
 	<body>
 		<div class="container">
@@ -16,31 +24,36 @@
 					alt="Logo Atletico Mineiro"
 					width="40px"
 				/>
-				<h1>Busca de Jogadores</h1>
+				<h1>Atlético Mineiro</h1>
 			</div>
-			<div class="searchBox">
-				<input type="text" name="names" id="names" placeholder="pesquisar..." />
-				<!-- <button onclick="renderPlayers(atleticoPlayers)">Gerar Nomes</button> -->
-			</div>
+			<section class="filters">
+				<h2>Busca de Jogadores</h2>
+				<div class="searchBox">
+					<input
+						type="text"
+						name="names"
+						id="names"
+						placeholder="pesquisar..."
+					/>
+				</div>
 
-			<div class="filterBox">
-				<label for="position">Escolha uma posição:</label>
+				<div class="filterBox">
+					<select id="position">
+						<option value="">Filtrar por posição</option>
+						<option value="goleiro">Goleiro</option>
+						<option value="zagueiro">Zagueiro</option>
+						<option value="meia">Meia</option>
+						<option value="atacante">Atacante</option>
+					</select>
+				</div>
+			</section>
 
-				<select id="position">
-					<option value="">Filtrar por posição</option>
-					<option value="goleiro">Goleiro</option>
-					<option value="zagueiro">Zagueiro</option>
-					<option value="meia">Meia</option>
-					<option value="atacante">Atacante</option>
-				</select>
-			</div>
-
-			<h2>Jogadores</h2>
-			<ul class="playersList" id="playersList">
-				<!-- <li id="playerList"></li> -->
-			</ul>
+			<section class="results">
+				<h2>Jogadores</h2>
+				<ul class="playersList" id="playersList"></ul>
+			</section>
 		</div>
 
-		<script src="assets/js/script.js"></script>
+		<script src="assets/js/main.js"></script>
 	</body>
 </html>
