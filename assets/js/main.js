@@ -304,11 +304,14 @@ const searchInput = document.getElementById('names')
 const positionSelect = document.getElementById('position')
 const playersList = document.getElementById('playersList')
 const playersCounter = document.getElementById('playersCounter')
+const playerModal = document.getElementById('playerModal')
+const modalPlayerInfo = document.getElementById('modalPlayerInfo')
+const closeModal = document.getElementById('closeModal')
 
 // Helpers
 function createPlayerCard(player) {
 	return `
-			<li class="${player.position.toLowerCase()}">
+			<li class="${player.position.toLowerCase()}" data-player-name="${player.name}">
 				<div class="playerInfo">
 					<div class="playerName">${player.name}</div>
 					<div class="playerPosition">${player.position}</div>
@@ -322,6 +325,25 @@ function createPlayerCard(player) {
 					<img src="${player.image}" alt="${player.name}" class="playerPhoto">
 				</div>
 			</li>
+		`
+}
+
+function createPlayerModal(player) {
+	return `
+			<div data-player-name="${player.name}" class="modalPlayer">
+				<div class="modalInfo">
+				<div class="playerName">${player.name}</div>
+					<div class="playerPosition">${player.position}</div>
+					<div class="shirtNumber">👕 Nº ${player.number}</div>
+					<div class="playerAge">${player.age} anos</div>
+					<div class="playerNationality">
+						${player.flag} ${player.nationality}
+					</div>
+				</div>
+				<div class="modalImage">
+					<img src="${player.image}" alt="${player.name}"class="modalPlayerPhoto">
+				</div>
+			</div>
 		`
 }
 
@@ -342,6 +364,10 @@ function renderPlayers(players) {
 	} else {
 		playersCounter.innerHTML = `${players.length} jogadores encontrados`
 	}
+}
+
+function renderPlayersModal(player) {
+	modalPlayerInfo.innerHTML = createPlayerModal(player)
 }
 
 // Funcionalidades
@@ -381,3 +407,17 @@ renderPlayers(atleticoPlayers)
 // Eventos
 searchInput.addEventListener('input', searchPlayers)
 positionSelect.addEventListener('change', getSelectedPosition)
+// playerModal.classList.add('open')
+closeModal.addEventListener('click', () => {
+	playerModal.classList.remove('open')
+})
+playersList.addEventListener('click', (event) => {
+	const card = event.target.closest('li')
+
+	const selectedPlayer = atleticoPlayers.find(
+		(player) => player.name === card.dataset.playerName,
+	)
+
+	renderPlayersModal(selectedPlayer)
+	playerModal.classList.add('open')
+})
