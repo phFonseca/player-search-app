@@ -307,6 +307,7 @@ const playersCounter = document.getElementById('playersCounter')
 const playerModal = document.getElementById('playerModal')
 const modalPlayerInfo = document.getElementById('modalPlayerInfo')
 const closeModal = document.getElementById('closeModal')
+const backToTopButton = document.getElementById('backToTop')
 
 // Helpers
 function createPlayerCard(player) {
@@ -401,16 +402,25 @@ function getSelectedPosition() {
 	renderPlayers(filteredPositions)
 }
 
+function handleBackToTopButton() {
+	if (window.scrollY > 300) {
+		backToTopButton.classList.add('show')
+	} else {
+		backToTopButton.classList.remove('show')
+	}
+}
 // Inicialização
 renderPlayers(atleticoPlayers)
 
 // Eventos
 searchInput.addEventListener('input', searchPlayers)
+
 positionSelect.addEventListener('change', getSelectedPosition)
-// playerModal.classList.add('open')
+
 closeModal.addEventListener('click', () => {
 	playerModal.classList.remove('open')
 })
+
 playersList.addEventListener('click', (event) => {
 	const card = event.target.closest('li')
 
@@ -420,4 +430,13 @@ playersList.addEventListener('click', (event) => {
 
 	renderPlayersModal(selectedPlayer)
 	playerModal.classList.add('open')
+})
+
+window.addEventListener('scroll', handleBackToTopButton)
+
+backToTopButton.addEventListener('click', () => {
+	window.scrollTo({
+		top: 0,
+		behavior: 'smooth',
+	})
 })
