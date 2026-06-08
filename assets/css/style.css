@@ -34,6 +34,39 @@ h2 {
 	font-size: 1.7rem;
 }
 
+.navigation {
+	margin-bottom: 30px;
+}
+
+.navigation ul {
+	list-style: none;
+	display: flex;
+	gap: 12px;
+	flex-wrap: wrap;
+}
+
+.navigation a {
+	display: inline-block;
+	padding: 8px 14px;
+	border: 1px solid #333;
+	color: #f1f1f1;
+	text-decoration: none;
+	font-weight: 700;
+	background: #1e1e1e;
+	transition: 0.3s;
+}
+
+.navigation a:hover {
+	background: #f1f1f1;
+	color: #121212;
+	transform: translateY(-2px);
+}
+
+.navigation a.active {
+	background: #f1f1f1;
+	color: #121212;
+}
+
 .filters {
 	display: flex;
 	flex-direction: column;
@@ -351,4 +384,101 @@ h2 {
 	opacity: 1;
 	visibility: visible;
 	transform: translateY(0);
+}
+
+/* =====================================
+									STATS
+========================================*/
+.statsGrid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 20px;
+}
+
+@media (min-width: 768px) {
+	.statsGrid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+.statsSummary {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+}
+
+.statsCard {
+	background: #1e1e1e;
+	padding: 16px;
+	border-radius: 12px;
+	border-left: 4px solid #f1c40f;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.statsCard span {
+	display: block;
+	color: #bdbdbd;
+	font-size: 14px;
+	margin-bottom: 6px;
+}
+
+.statsCard strong {
+	font-size: 26px;
+	color: #f1f1f1;
+}
+
+.statsSectionTitle {
+	margin-top: 10px;
+	font-size: 22px;
+	color: #f1f1f1;
+}
+
+.statsPlayerCard {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 20px;
+
+	background: #1e1e1e;
+	padding: 18px;
+	border-radius: 14px;
+	border-left: 4px solid #f1c40f;
+
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+.statsPlayerInfo {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.statsPlayerName {
+	font-size: 24px;
+	font-weight: 800;
+	margin-bottom: 8px;
+}
+
+.statsPlayerPosition,
+.statsPlayerAge {
+	color: #bdbdbd;
+	font-size: 15px;
+}
+
+.statsPlayerBadge {
+	display: inline-block;
+	width: fit-content;
+	padding: 5px 10px;
+	border-radius: 8px;
+	background: #2a2a2a;
+	color: #dcdcdc;
+	font-size: 14px;
+}
+
+.statsPlayerPhoto {
+	width: 110px;
+	height: 110px;
+	object-fit: cover;
+	object-position: top center;
+	border-radius: 12px;
 }
