@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="icon"
+			type="image/png"
+			href="assets/favicon/favicon-96x96.png"
+			sizes="96x96"
+		/>
+		<link rel="shortcut icon" href="assets/favicon/favicon.ico" />
+
+		<link rel="stylesheet" href="assets/css/style.css" />
+
+		<title>Atlético Mineiro</title>
+	</head>
+	<body>
+		<div class="container">
+			<header class="header">
+				<img
+					src="assets/img/Clube_Atlético_Mineiro.svg.png"
+					alt="Logo Atletico Mineiro"
+					width="40px"
+				/>
+				<h1>Atlético Mineiro</h1>
+			</header>
+			<nav class="navigation">
+				<ul>
+					<li><a href="index.html">Jogadores </a></li>
+					<li>
+						<a href="stats.html" class="active">Estatísticas</a>
+					</li>
+				</ul>
+			</nav>
+			<main>
+				<section class="statsSummary">
+					<h2>Estatísticas do Elenco</h2>
+					<div class="statsGrid" id="statsSummary"></div>
+				</section>
+
+				<section class="positionStats">
+					<h2>Distribuição por posição</h2>
+					<div class="statsGrid" id="positionStats"></div>
+				</section>
+			</main>
+		</div>
+		<script src="assets/js/playersData.js"></script>
+		<script src="assets/js/stats.js"></script>
+	</body>
+</html>
