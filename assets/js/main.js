@@ -421,6 +421,12 @@ closeModal.addEventListener('click', () => {
 	playerModal.classList.remove('open')
 })
 
+playerModal.addEventListener('click', (event) => {
+	if (event.target === playerModal) {
+		playerModal.classList.remove('open')
+	}
+})
+
 playersList.addEventListener('click', (event) => {
 	const card = event.target.closest('li')
 
