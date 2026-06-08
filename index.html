@@ -18,41 +18,53 @@
 	</head>
 	<body>
 		<div class="container">
-			<div class="header">
+			<header class="header">
 				<img
 					src="assets/img/Clube_Atlético_Mineiro.svg.png"
 					alt="Logo Atletico Mineiro"
 					width="40px"
 				/>
 				<h1>Atlético Mineiro</h1>
-			</div>
-			<section class="filters">
-				<h2>Busca de Jogadores</h2>
-				<div class="searchBox">
-					<input
-						type="text"
-						name="names"
-						id="names"
-						placeholder="pesquisar..."
-					/>
-				</div>
+			</header>
+			<nav class="navigation">
+				<ul>
+					<li>
+						<a href="index.html" class="active">Jogadores </a>
+					</li>
+					<li>
+						<a href="stats.html">Estatisticas</a>
+					</li>
+				</ul>
+			</nav>
+			<main>
+				<section class="filters">
+					<h2>Busca de Jogadores</h2>
+					<div class="searchBox">
+						<input
+							type="text"
+							name="names"
+							id="names"
+							placeholder="pesquisar..."
+						/>
+					</div>
 
-				<div class="filterBox">
-					<select id="position">
-						<option value="">Filtrar por posição</option>
-						<option value="goleiro">Goleiro</option>
-						<option value="zagueiro">Zagueiro</option>
-						<option value="meia">Meia</option>
-						<option value="atacante">Atacante</option>
-					</select>
-				</div>
-			</section>
+					<div class="filterBox">
+						<select id="position">
+							<option value="">Filtrar por posição</option>
+							<option value="goleiro">Goleiro</option>
+							<option value="zagueiro">Zagueiro</option>
+							<option value="meia">Meia</option>
+							<option value="atacante">Atacante</option>
+						</select>
+					</div>
+				</section>
 
-			<section class="results">
-				<h2>Jogadores</h2>
-				<p id="playersCounter"></p>
-				<ul class="playersList" id="playersList"></ul>
-			</section>
+				<section class="results">
+					<h2>Jogadores</h2>
+					<p id="playersCounter"></p>
+					<ul class="playersList" id="playersList"></ul>
+				</section>
+			</main>
 		</div>
 		<div class="modal" id="playerModal">
 			<div class="modalContent">
@@ -78,6 +90,7 @@
 				<path d="M12 2V22" />
 			</svg>
 		</button>
+		<script src="assets/js/playersData.js"></script>
 		<script src="assets/js/main.js"></script>
 	</body>
 </html>
