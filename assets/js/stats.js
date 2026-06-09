@@ -42,14 +42,28 @@ const createStatsSectionTitle = function (title) {
 	`
 }
 
-// Renderização
-const renderTotalPlayers = function () {
-	const totalPlayers = atleticoPlayers.length
-
-	appendStatsCard('Total de jogadores', totalPlayers)
+// Getters
+const getTotalPlayers = function (players) {
+	return players.length
 }
 
-const renderOldestPlayer = function (players) {
+const getAverageAge = function (players) {
+	if (!players.length) return
+
+	let totalAge = 0
+	const totalPlayers = players.length
+
+	for (const player of players) {
+		totalAge += player.age
+	}
+
+	const averageAge = totalAge / totalPlayers
+	return Math.round(averageAge)
+}
+
+const getOldestPlayer = function (players) {
+	if (!players.length) return
+
 	let oldestPlayer = players[0]
 
 	for (const player of players) {
@@ -57,13 +71,12 @@ const renderOldestPlayer = function (players) {
 			oldestPlayer = player
 		}
 	}
-	statsSummary.innerHTML += `
-    ${createStatsSectionTitle('Jogador mais velho do elenco')}
-    ${createStatsPlayerCard(oldestPlayer)}
-  `
-}
 
-const renderYoungestPlayer = function (players) {
+	return oldestPlayer
+}
+const getYoungestPlayer = function (players) {
+	if (!players.length) return
+
 	let youngestPlayer = players[0]
 
 	for (const player of players) {
@@ -71,6 +84,34 @@ const renderYoungestPlayer = function (players) {
 			youngestPlayer = player
 		}
 	}
+
+	return youngestPlayer
+}
+
+// Renderização
+const renderTotalPlayers = function (players) {
+	const totalPlayers = getTotalPlayers(players)
+
+	appendStatsCard('Total de jogadores', totalPlayers)
+}
+
+const renderAverageAge = function (players) {
+	const averageAge = getAverageAge(players)
+	appendStatsCard('Media de idade do elenco', `${averageAge} anos`)
+}
+
+const renderOldestPlayer = function (players) {
+	const oldestPlayer = getOldestPlayer(players)
+
+	statsSummary.innerHTML += `
+    ${createStatsSectionTitle('Jogador mais velho do elenco')}
+    ${createStatsPlayerCard(oldestPlayer)}
+  `
+}
+
+const renderYoungestPlayer = function (players) {
+	const youngestPlayer = getYoungestPlayer(players)
+
 	statsSummary.innerHTML += `
     ${createStatsSectionTitle('Jogador mais novo do elenco')}
     ${createStatsPlayerCard(youngestPlayer)}
@@ -78,6 +119,7 @@ const renderYoungestPlayer = function (players) {
 }
 
 // Inicialização
-renderTotalPlayers()
+renderTotalPlayers(atleticoPlayers)
+renderAverageAge(atleticoPlayers)
 renderOldestPlayer(atleticoPlayers)
 renderYoungestPlayer(atleticoPlayers)
