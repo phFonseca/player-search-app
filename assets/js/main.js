@@ -7,6 +7,13 @@ const playerModal = document.getElementById('playerModal')
 const modalPlayerInfo = document.getElementById('modalPlayerInfo')
 const closeModal = document.getElementById('closeModal')
 const backToTopButton = document.getElementById('backToTop')
+let players = []
+
+async function init() {
+	players = await getPlayers()
+
+	renderPlayers(players)
+}
 
 // Helpers
 function createPlayerCard(player) {
@@ -41,7 +48,7 @@ function createPlayerModal(player) {
 					</div>
 				</div>
 				<div class="modalImage">
-					<img src="${player.image}" alt="${player.name}"class="modalPlayerPhoto">
+					<img src="${player.image}" alt="${player.name} "class="modalPlayerPhoto">
 				</div>
 			</div>
 		`
@@ -75,11 +82,11 @@ function searchPlayers() {
 	let search = searchInput.value.toLowerCase()
 
 	if (search === '') {
-		renderPlayers(atleticoPlayers)
+		renderPlayers(players)
 		return
 	}
 
-	const playersFound = atleticoPlayers.filter((player) =>
+	const playersFound = players.filter((player) =>
 		player.name.toLowerCase().includes(search),
 	)
 
@@ -90,11 +97,11 @@ function getSelectedPosition() {
 	const selectedPosition = positionSelect.value
 
 	if (selectedPosition === '') {
-		renderPlayers(atleticoPlayers)
+		renderPlayers(players)
 		return
 	}
 
-	const filteredPositions = atleticoPlayers.filter(
+	const filteredPositions = players.filter(
 		(player) => player.position.toLowerCase() === selectedPosition,
 	)
 
@@ -109,7 +116,8 @@ function handleBackToTopButton() {
 	}
 }
 // Inicialização
-renderPlayers(atleticoPlayers)
+// renderPlayers(players)
+init()
 
 // Eventos
 searchInput.addEventListener('input', searchPlayers)
@@ -129,7 +137,9 @@ playerModal.addEventListener('click', (event) => {
 playersList.addEventListener('click', (event) => {
 	const card = event.target.closest('li')
 
-	const selectedPlayer = atleticoPlayers.find(
+	if (!card) return
+
+	const selectedPlayer = players.find(
 		(player) => player.name === card.dataset.playerName,
 	)
 

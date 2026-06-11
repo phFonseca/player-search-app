@@ -1,5 +1,16 @@
 // Elementos DOM
 const statsSummary = document.getElementById('statsSummary')
+let players = []
+
+async function init() {
+	players = await getPlayers()
+
+	// renderPlayers(players)
+	renderTotalPlayers(players)
+	renderAverageAge(players)
+	renderOldestPlayer(players)
+	renderYoungestPlayer(players)
+}
 
 // Helpers
 const createStatsCard = function (title, value) {
@@ -97,7 +108,7 @@ const renderTotalPlayers = function (players) {
 
 const renderAverageAge = function (players) {
 	const averageAge = getAverageAge(players)
-	appendStatsCard('Media de idade do elenco', `${averageAge} anos`)
+	appendStatsCard('Média de idade do elenco', `${averageAge} anos`)
 }
 
 const renderOldestPlayer = function (players) {
@@ -119,7 +130,8 @@ const renderYoungestPlayer = function (players) {
 }
 
 // Inicialização
-renderTotalPlayers(atleticoPlayers)
-renderAverageAge(atleticoPlayers)
-renderOldestPlayer(atleticoPlayers)
-renderYoungestPlayer(atleticoPlayers)
+init()
+// renderTotalPlayers(players)
+// renderAverageAge(players)
+// renderOldestPlayer(players)
+// renderYoungestPlayer(players)
