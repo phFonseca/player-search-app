@@ -1,0 +1,16 @@
+{
+	"name": "player-search-app",
+	"version": "1.0.0",
+	"description": "Aplicação web desenvolvida com HTML, CSS e JavaScript puro para exibição e consulta de jogadores de futebol. O projeto permite pesquisar atletas por nome em tempo real e filtrar resultados por posição, utilizando manipulação do DOM, eventos, funções reutilizáveis e renderização dinâmica de conteúdo.",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"api": "json-server --watch db.json --port 3000"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"json-server": "^1.0.0-beta.15"
+	}
+}
