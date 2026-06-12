@@ -18,7 +18,7 @@ async function init() {
 // Helpers
 function createPlayerCard(player) {
 	return `
-			<li class="${player.position.toLowerCase()}" data-player-name="${player.name}">
+			<li class="${player.position.toLowerCase()}" data-player-id="${player.id}">
 				<div class="playerInfo">
 					<div class="playerName">${player.name}</div>
 					<div class="playerPosition">${player.position}</div>
@@ -37,7 +37,7 @@ function createPlayerCard(player) {
 
 function createPlayerModal(player) {
 	return `
-			<div data-player-name="${player.name}" class="modalPlayer">
+			<div data-player-id="${player.id}" class="modalPlayer">
 				<div class="modalInfo">
 				<div class="playerName">${player.name}</div>
 					<div class="playerPosition">${player.position}</div>
@@ -48,7 +48,7 @@ function createPlayerModal(player) {
 					</div>
 				</div>
 				<div class="modalImage">
-					<img src="${player.image}" alt="${player.name} "class="modalPlayerPhoto">
+					<img src="${player.image}" alt="${player.name}" class="modalPlayerPhoto">
 				</div>
 			</div>
 		`
@@ -140,8 +140,10 @@ playersList.addEventListener('click', (event) => {
 	if (!card) return
 
 	const selectedPlayer = players.find(
-		(player) => player.name === card.dataset.playerName,
+		(player) => String(player.id) === card.dataset.playerId,
 	)
+
+	if (!selectedPlayer) return
 
 	renderPlayersModal(selectedPlayer)
 	playerModal.classList.add('open')

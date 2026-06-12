@@ -1,15 +1,16 @@
 // Elementos DOM
 const statsSummary = document.getElementById('statsSummary')
+const positionStats = document.getElementById('positionStats')
 let players = []
 
 async function init() {
 	players = await getPlayers()
 
-	// renderPlayers(players)
 	renderTotalPlayers(players)
 	renderAverageAge(players)
 	renderOldestPlayer(players)
 	renderYoungestPlayer(players)
+	renderPlayersByPosition(players)
 }
 
 // Helpers
@@ -99,6 +100,29 @@ const getYoungestPlayer = function (players) {
 	return youngestPlayer
 }
 
+const getPlayersByPosition = function (players) {
+	const positions = {}
+
+	for (const player of players) {
+		const position = player.position
+
+		if (positions[position] === undefined) {
+			positions[position] = 1
+		} else {
+			positions[position] += 1
+		}
+	}
+
+	// {
+	// 	Goleiro: 4,
+	// 	Zagueiro: 6,
+	// 	Lateral: 4,
+	// 	Meia: 13,
+	// 	Atacante: 5
+	// }
+	return positions
+}
+
 // Renderização
 const renderTotalPlayers = function (players) {
 	const totalPlayers = getTotalPlayers(players)
@@ -129,9 +153,15 @@ const renderYoungestPlayer = function (players) {
   `
 }
 
+const renderPlayersByPosition = function (players) {
+	const positions = getPlayersByPosition(players)
+
+	positionStats.innerHTML += createStatsSectionTitle('Quantidade por posição')
+
+	for (const [position, amount] of Object.entries(positions)) {
+		positionStats.innerHTML += createStatsCard(position, amount)
+	}
+}
+
 // Inicialização
 init()
-// renderTotalPlayers(players)
-// renderAverageAge(players)
-// renderOldestPlayer(players)
-// renderYoungestPlayer(players)
