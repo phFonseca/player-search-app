@@ -389,22 +389,47 @@ h2 {
 /* =====================================
 									STATS
 ========================================*/
-.statsGrid {
-	display: grid;
-	grid-template-columns: 1fr;
-	gap: 20px;
-}
-
-@media (min-width: 768px) {
-	.statsGrid {
-		grid-template-columns: repeat(2, 1fr);
-	}
-}
 
 .statsSummary {
 	display: flex;
 	flex-direction: column;
 	gap: 24px;
+	margin-bottom: 20px;
+}
+
+.statsGrid,
+.statsGridPosition {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 20px;
+}
+
+.statsGridPosition {
+	grid-template-columns: repeat(2, 1fr);
+}
+
+.statsHighlights {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 20px;
+	/* margin-bottom: 20px; */
+}
+
+.positionStats {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	margin-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+	.statsGrid,
+	.statsHighlights {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	.statsGridPosition {
+		grid-template-columns: repeat(3, 1fr);
+	}
 }
 
 .statsCard {
@@ -428,7 +453,7 @@ h2 {
 }
 
 .statsSectionTitle {
-	margin-top: 10px;
+	margin-bottom: 10px;
 	font-size: 22px;
 	color: #f1f1f1;
 }

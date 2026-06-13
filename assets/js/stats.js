@@ -1,6 +1,7 @@
 // Elementos DOM
 const statsSummary = document.getElementById('statsSummary')
 const positionStats = document.getElementById('positionStats')
+const statsHighlights = document.getElementById('statsHighlights')
 let players = []
 
 async function init() {
@@ -138,29 +139,39 @@ const renderAverageAge = function (players) {
 const renderOldestPlayer = function (players) {
 	const oldestPlayer = getOldestPlayer(players)
 
-	statsSummary.innerHTML += `
-    ${createStatsSectionTitle('Jogador mais velho do elenco')}
-    ${createStatsPlayerCard(oldestPlayer)}
+	statsHighlights.innerHTML += `
+		<div>
+			${createStatsSectionTitle('Jogador mais velho do elenco')}
+			${createStatsPlayerCard(oldestPlayer)}
+		</div>
   `
 }
 
 const renderYoungestPlayer = function (players) {
 	const youngestPlayer = getYoungestPlayer(players)
 
-	statsSummary.innerHTML += `
-    ${createStatsSectionTitle('Jogador mais novo do elenco')}
-    ${createStatsPlayerCard(youngestPlayer)}
+	statsHighlights.innerHTML += `
+		<div>
+			${createStatsSectionTitle('Jogador mais novo do elenco')}
+			${createStatsPlayerCard(youngestPlayer)}
+		</div>
   `
 }
 
 const renderPlayersByPosition = function (players) {
+	let positionCards = ''
+
 	const positions = getPlayersByPosition(players)
 
-	positionStats.innerHTML += createStatsSectionTitle('Quantidade por posição')
-
 	for (const [position, amount] of Object.entries(positions)) {
-		positionStats.innerHTML += createStatsCard(position, amount)
+		positionCards += createStatsCard(position, amount)
 	}
+
+	positionStats.innerHTML += `
+		<div class="statsGridPosition">
+			${positionCards}
+		</div>
+	`
 }
 
 // Inicialização
