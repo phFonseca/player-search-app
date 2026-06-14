@@ -116,7 +116,6 @@ function handleBackToTopButton() {
 	}
 }
 // Inicialização
-// renderPlayers(players)
 init()
 
 // Eventos

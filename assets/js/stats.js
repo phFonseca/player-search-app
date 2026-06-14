@@ -9,6 +9,7 @@ async function init() {
 
 	renderTotalPlayers(players)
 	renderAverageAge(players)
+	renderForeignPlayers(players)
 	renderOldestPlayer(players)
 	renderYoungestPlayer(players)
 	renderPlayersByPosition(players)
@@ -74,6 +75,18 @@ const getAverageAge = function (players) {
 	return Math.round(averageAge)
 }
 
+const getForeignPlayers = function (players) {
+	let foreignPlayers = 0
+
+	for (const player of players) {
+		if (player.nationality !== 'Brasil') {
+			foreignPlayers += 1
+		}
+	}
+
+	return foreignPlayers
+}
+
 const getOldestPlayer = function (players) {
 	if (!players.length) return
 
@@ -134,6 +147,11 @@ const renderTotalPlayers = function (players) {
 const renderAverageAge = function (players) {
 	const averageAge = getAverageAge(players)
 	appendStatsCard('Média de idade do elenco', `${averageAge} anos`)
+}
+
+const renderForeignPlayers = function (players) {
+	const foreignPlayers = getForeignPlayers(players)
+	appendStatsCard('Estrangeiros no elenco', foreignPlayers)
 }
 
 const renderOldestPlayer = function (players) {
