@@ -74,7 +74,11 @@ h2 {
 	margin-bottom: 30px;
 }
 
-.results {
+.filters h2 {
+	text-align: center;
+}
+
+.mainFilters {
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
@@ -86,14 +90,60 @@ h2 {
 	gap: 10px;
 }
 
+.sortBox,
+.sortButtonsArea,
+.buttonsArea {
+	display: flex;
+	gap: 10px;
+}
+
+.sortBox {
+	flex-direction: column;
+}
+
+.sortButtonsArea {
+	flex-direction: row;
+	justify-content: space-between;
+	/* gap: 20px; */
+}
+
+.sortButtonsArea button {
+	padding: 10px 14px;
+	border: 1px solid #333;
+	border-radius: 8px;
+	background: #1e1e1e;
+	color: #f1f1f1;
+	font-weight: 700;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+.sortButtonsArea button:hover,
+.sortButtonsArea button.active {
+	background: #f1f1f1;
+	color: #121212;
+}
+
+.sortButtons {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.results {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
 @media (min-width: 768px) {
 	.searchBox {
 		flex-direction: row;
+		width: 70%;
 	}
 
 	.searchBox input {
-		/* flex: 1; */
-		max-width: 300px;
+		width: 100%;
 	}
 
 	.header h1 {
@@ -102,10 +152,21 @@ h2 {
 
 	.filters {
 		display: flex;
-		flex-direction: row;
+		flex-direction: column;
 		gap: 20px;
-		align-items: center;
 		margin-bottom: 30px;
+	}
+
+	.mainFilters {
+		display: flex;
+		gap: 20px;
+		flex-direction: row;
+	}
+
+	.sortButtonsArea {
+		gap: 50px;
+		flex-direction: row;
+		justify-content: start;
 	}
 }
 

@@ -7,7 +7,9 @@ const playerModal = document.getElementById('playerModal')
 const modalPlayerInfo = document.getElementById('modalPlayerInfo')
 const closeModal = document.getElementById('closeModal')
 const backToTopButton = document.getElementById('backToTop')
+const sortButtons = document.querySelectorAll('[data-sort]')
 let players = []
+let currentSort = ''
 
 async function init() {
 	players = await getPlayers()
@@ -108,6 +110,56 @@ function getSelectedPosition() {
 	renderPlayers(filteredPositions)
 }
 
+function sortPlayers(playersToSort) {
+	const sortedPlayers = [...playersToSort]
+
+	if (currentSort === 'name-asc') {
+		// ordem crescente
+		sortedPlayers.sort((a, b) => a.name.localeCompare(b.name, 'pt-BR'))
+	} else if (currentSort === 'name-desc') {
+		// ordem decrescente
+		sortedPlayers.sort((a, b) => b.name.localeCompare(a.name, 'pt-BR'))
+	} else if (currentSort === 'age-asc') {
+		// ordem crescente
+		sortedPlayers.sort(function (a, b) {
+			if (a.age > b.age) {
+				return 1
+			}
+		})
+	} else if (currentSort === 'age-desc') {
+		// ordem decrescente
+		sortedPlayers.sort(function (a, b) {
+			if (a.age > b.age) {
+				return -1
+			}
+		})
+	}
+
+	return sortedPlayers
+}
+
+function applyFilters() {
+	let filteredPlayers = [...players]
+	const search = searchInput.value.toLowerCase()
+	const selectedPosition = positionSelect.value
+
+	if (search !== '') {
+		filteredPlayers = filteredPlayers.filter((playerFiltered) =>
+			playerFiltered.name.toLowerCase().includes(search),
+		)
+	}
+
+	if (selectedPosition !== '') {
+		filteredPlayers = filteredPlayers.filter(
+			(player) => player.position.toLowerCase() === selectedPosition,
+		)
+	}
+
+	filteredPlayers = sortPlayers(filteredPlayers)
+
+	renderPlayers(filteredPlayers)
+}
+
 function handleBackToTopButton() {
 	if (window.scrollY > 300) {
 		backToTopButton.classList.add('show')
@@ -119,9 +171,23 @@ function handleBackToTopButton() {
 init()
 
 // Eventos
-searchInput.addEventListener('input', searchPlayers)
+searchInput.addEventListener('input', applyFilters)
 
-positionSelect.addEventListener('change', getSelectedPosition)
+positionSelect.addEventListener('change', applyFilters)
+
+for (const button of sortButtons) {
+	button.addEventListener('click', (event) => {
+		const selectedSort = (currentSort = event.currentTarget.dataset.sort)
+		if (selectedSort === 'clear-sort') {
+			currentSort = ''
+			positionSelect.value = ''
+		} else {
+			currentSort = selectedSort
+		}
+
+		applyFilters()
+	})
+}
 
 closeModal.addEventListener('click', () => {
 	playerModal.classList.remove('open')
