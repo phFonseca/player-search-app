@@ -121,18 +121,10 @@ function sortPlayers(playersToSort) {
 		sortedPlayers.sort((a, b) => b.name.localeCompare(a.name, 'pt-BR'))
 	} else if (currentSort === 'age-asc') {
 		// ordem crescente
-		sortedPlayers.sort(function (a, b) {
-			if (a.age > b.age) {
-				return 1
-			}
-		})
+		sortedPlayers.sort((a, b) => a.age - b.age)
 	} else if (currentSort === 'age-desc') {
 		// ordem decrescente
-		sortedPlayers.sort(function (a, b) {
-			if (a.age > b.age) {
-				return -1
-			}
-		})
+		sortedPlayers.sort((a, b) => b.age - a.age)
 	}
 
 	return sortedPlayers
