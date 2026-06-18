@@ -21,17 +21,19 @@ async function init() {
 function createPlayerCard(player) {
 	return `
 			<li class="${player.position.toLowerCase()}" data-player-id="${player.id}">
-				<div class="playerInfo">
-					<div class="playerName">${player.name}</div>
-					<div class="playerPosition">${player.position}</div>
-					<div class="shirtNumber">👕 Nº ${player.number}</div>
-					<div class="playerAge">${player.age} anos</div>
-					<div class="playerNationality">
-						${player.flag} ${player.nationality}
+				<div data-player-id="${player.id}" class="modalPlayer">
+					<div class="playerInfo">
+						<div class="playerName">${player.name}</div>
+						<div class="playerPosition">${player.position}</div>
+						<div class="shirtNumber">👕 Nº ${player.number}</div>
+						<div class="playerAge">${player.age} anos</div>
+						<div class="playerNationality">
+							${player.flag} ${player.nationality}
+						</div>
 					</div>
-				</div>
-				<div class="playerImg">
-					<img src="${player.image}" alt="${player.name}" class="playerPhoto">
+					<div class="playerImg">
+						<img src="${player.image}" alt="${player.name}" class="playerPhoto">
+					</div>
 				</div>
 			</li>
 		`
@@ -152,6 +154,12 @@ function applyFilters() {
 	renderPlayers(filteredPlayers)
 }
 
+function clearActiveSortButtons() {
+	for (const button of sortButtons) {
+		button.classList.remove('active')
+	}
+}
+
 function handleBackToTopButton() {
 	if (window.scrollY > 300) {
 		backToTopButton.classList.add('show')
@@ -159,6 +167,7 @@ function handleBackToTopButton() {
 		backToTopButton.classList.remove('show')
 	}
 }
+
 // Inicialização
 init()
 
@@ -169,11 +178,14 @@ positionSelect.addEventListener('change', applyFilters)
 
 for (const button of sortButtons) {
 	button.addEventListener('click', (event) => {
-		const selectedSort = (currentSort = event.currentTarget.dataset.sort)
+		clearActiveSortButtons()
+
+		const selectedSort = event.currentTarget.dataset.sort
 		if (selectedSort === 'clear-sort') {
 			currentSort = ''
 			positionSelect.value = ''
 		} else {
+			event.currentTarget.classList.add('active')
 			currentSort = selectedSort
 		}
 

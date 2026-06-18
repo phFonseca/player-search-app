@@ -127,13 +127,6 @@ const getPlayersByPosition = function (players) {
 		}
 	}
 
-	// {
-	// 	Goleiro: 4,
-	// 	Zagueiro: 6,
-	// 	Lateral: 4,
-	// 	Meia: 13,
-	// 	Atacante: 5
-	// }
 	return positions
 }
 
