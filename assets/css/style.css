@@ -497,7 +497,7 @@ h2 {
 	background: #1e1e1e;
 	padding: 16px;
 	border-radius: 12px;
-	border-left: 4px solid #f1c40f;
+	border-left: 4px solid #27ae60;
 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
@@ -528,7 +528,7 @@ h2 {
 	background: #1e1e1e;
 	padding: 18px;
 	border-radius: 14px;
-	border-left: 4px solid #f1c40f;
+	border-left: 4px solid #27ae60;
 
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
 }
